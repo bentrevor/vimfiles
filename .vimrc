@@ -202,4 +202,3 @@ map ¬ :RainbowParenthesesLoadRound<cr>:RainbowParenthesesActivate<cr>
 
 " <alt-p> toggles paste mode
 map π :set invpaste<CR>:set paste?<CR>
-

@@ -13,6 +13,7 @@ git_bundles = [
   "git://github.com/garbas/vim-snipmate.git",
   "git://github.com/honza/vim-snippets.git",
 
+  "git://github.com/bling/vim-airline.git",
   "git://github.com/pangloss/vim-javascript",
   "git://github.com/pgr0ss/vimux-ruby-test.git",
   "git://github.com/scrooloose/nerdtree.git",
