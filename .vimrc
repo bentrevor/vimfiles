@@ -17,7 +17,7 @@ endif
 
 syntax on
 set background=dark
-color darkbone
+color tomorrownight
 
 set nobackup
 set nowb
