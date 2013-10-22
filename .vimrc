@@ -71,7 +71,7 @@ au BufNewFile,BufRead *.hiccup set filetype=clojure
 au BufNewFile,BufRead *.cljs set filetype=clojure
 
 " pressing tab in command shows options
-set wildmenu 
+set wildmenu
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
@@ -115,10 +115,8 @@ let vimclojure#ParenRainbow=1
 
 """ mappings """
 """"""""""""""""
-nmap , \
-
-" map semicolon to colon
 nnoremap ; :
+nnoremap , ;
 
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
