@@ -58,6 +58,7 @@ set shiftwidth=2
 
 " filetype-specific indentation
 autocmd FileType html setlocal ts=2 sts=2 sw=2
+autocmd FileType css setlocal ts=2 sts=2 sw=2
 autocmd FileType ruby setlocal ts=2 sts=2 sw=2
 autocmd FileType clojure setlocal ts=2 sts=2 sw=2
 autocmd FileType python setlocal ts=4 sts=4 sw=4
@@ -178,6 +179,8 @@ nnoremap <leader>u $^xx$
 map <leader>sa :%s//g<Left><Left>
 map <leader>sv :s//g<Left><Left>
 
+" delete trailing whitespace
+" nmap <leader>w :%s/\s\+$//<cr>
 
 
 
