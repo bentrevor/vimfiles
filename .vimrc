@@ -63,13 +63,12 @@ autocmd FileType ruby setlocal ts=2 sts=2 sw=2
 autocmd FileType clojure setlocal ts=2 sts=2 sw=2
 autocmd FileType python setlocal ts=4 sts=4 sw=4
 autocmd FileType java setlocal ts=4 sts=4 sw=4
-autocmd BufNewFile,BufRead *.hiccup set filetype=clojure
 
 " clojure filetype settings
 autocmd FileType clojure setlocal lispwords+=describe,it,context,around
 autocmd FileType clojure setlocal wildignore+=target/**/*
-au BufNewFile,BufRead *.hiccup set filetype=clojure
-au BufNewFile,BufRead *.cljs set filetype=clojure
+autocmd BufNewFile,BufRead *.hiccup set filetype=clojure
+autocmd BufNewFile,BufRead *.cljs set filetype=clojure
 
 " pressing tab in command shows options
 set wildmenu
@@ -132,19 +131,17 @@ map <C-l> <C-W>l
 " Remap x to delete instead of cut
 noremap x "_dl
 
-" disable <F1> key help
-nmap <F1> <nop>
-imap <F1> <nop>
-
 " set * to not automatically jump to next word
 nnoremap * ma*`a
 
 " !! repeats last command
 nnoremap !! @:<cr>
 
-" unmap c-p and ex mode
+" unmap c-p, ex mode, F1 help,
 inoremap <c-p> p
 nnoremap Q <nop>
+nmap <F1> <nop>
+imap <F1> <nop>
 
 " \h clears highlighting
 nnoremap <leader>h :noh<cr>
@@ -180,7 +177,7 @@ map <leader>sa :%s//g<Left><Left>
 map <leader>sv :s//g<Left><Left>
 
 " delete trailing whitespace
-" nmap <leader>w :%s/\s\+$//<cr>
+nmap <leader><leader>w :%s/\s\+$//<cr>
 
 
 
@@ -203,3 +200,5 @@ map ¬ :RainbowParenthesesLoadRound<cr>:RainbowParenthesesActivate<cr>
 
 " <alt-p> toggles paste mode
 map π :set invpaste<CR>:set paste?<CR>
+
+
