@@ -82,8 +82,9 @@ else
 endif
 
 " highlight trailing whitespace
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
+" (this got annoying)
+" autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+" autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
 
 " " set up highlight group & retain through colorscheme changes
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -177,7 +178,7 @@ map <leader>sa :%s//g<Left><Left>
 map <leader>sv :s//g<Left><Left>
 
 " delete trailing whitespace
-nmap <leader><leader>w :%s/\s\+$//<cr>
+nmap <leader><leader>w :%s/\s\+$//<cr>ma/<up><up><cr>:noh<cr>`a
 
 
 
