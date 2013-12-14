@@ -1,9 +1,6 @@
 #!/usr/bin/env ruby
 
 git_bundles = [
-#   "git://github.com/wincent/Command-T.git",
-#   "git://github.com/benmills/vimux.git",
-#   "git://github.com/edsono/vim-matchit.git",
   "git://github.com/guns/vim-clojure-static.git",
 #   "git://github.com/jnwhiteh/vim-golang.git",
 #   "git://github.com/kchmck/vim-coffee-script.git",
@@ -16,32 +13,10 @@ git_bundles = [
 
   "git://github.com/bling/vim-airline.git",
   # "git://github.com/pangloss/vim-javascript",
-  # "git://github.com/pgr0ss/vimux-ruby-test.git",
   "git://github.com/scrooloose/nerdtree.git",
-  # "git://github.com/terryma/vim-expand-region.git",
-  # "git://github.com/tpope/vim-classpath.git",
-  # "git://github.com/tpope/vim-cucumber.git",
-  # "git://github.com/tpope/vim-dispatch.git",
   "git://github.com/tpope/vim-fireplace.git",
-  # "git://github.com/tpope/vim-fugitive.git",
-  # "git://github.com/tpope/vim-git.git",
-  # "git://github.com/tpope/vim-haml.git",
-  # "git://github.com/tpope/vim-markdown.git",
   "git://github.com/tpope/vim-pathogen.git",
-  # "git://github.com/tpope/vim-rails.git",
-  # "git://github.com/tpope/vim-repeat.git",
-  # "git://github.com/tpope/vim-surround.git",
-  # "git://github.com/tpope/vim-unimpaired.git",
-  # "git://github.com/tsaleh/vim-supertab.git",
-  # "git://github.com/vim-ruby/vim-ruby.git",
-  # "git://github.com/vim-scripts/CSApprox.git",
-  # "git://github.com/vim-scripts/jquery.git",
   "git://github.com/vim-scripts/Colour-Sampler-Pack.git"
-]
-
-hg_bundles = [
-  # e.g.
-  # "https://bitbucket.org/kovisoft/paredit"
 ]
 
 require 'fileutils'
@@ -51,6 +26,8 @@ bundles_dir = File.join(File.dirname(__FILE__), "bundle")
 
 FileUtils.mkdir_p(bundles_dir)
 FileUtils.cd(bundles_dir)
+
+# TODO: maybe symlink .vimrc from here...
 
 git_bundles.each do |url|
   dir = url.split('/').last.sub(/\.git$/, '')
@@ -64,24 +41,4 @@ git_bundles.each do |url|
     `git clone #{url} #{dir}`
   end
 end
-
-if system("which", "hg")
-  hg_bundles.each do |url|
-    dir = url.split('/').last
-
-    if File.exists?(dir)
-      if !ENV["SKIP_UPDATING_VIM_BUNDLES"]
-        puts "  Pulling from #{url} into #{dir}"
-        `cd #{dir} && hg pull && cd ..`
-      end
-    else
-      puts "  Unpacking #{url} into #{dir}"
-      system("hg", "clone", url, dir, :out => '/dev/null')
-    end
-  end
-end
-
-puts "####################"
-puts "# Don't forget to build extensions (e.g. Command-T) if you haven't already)"
-puts "####################"
 

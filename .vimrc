@@ -69,6 +69,8 @@ autocmd FileType clojure setlocal lispwords+=describe,it,context,around
 autocmd FileType clojure setlocal wildignore+=target/**/*
 autocmd BufNewFile,BufRead *.hiccup set filetype=clojure
 autocmd BufNewFile,BufRead *.cljs set filetype=clojure
+autocmd BufNewFile,BufRead *.ejs set filetype=html
+autocmd BufNewFile,BufRead *.erb set filetype=html
 
 " pressing tab in command shows options
 set wildmenu
