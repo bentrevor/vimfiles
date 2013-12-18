@@ -15,30 +15,46 @@ git_bundles = [
   # "git://github.com/pangloss/vim-javascript",
   "git://github.com/scrooloose/nerdtree.git",
   "git://github.com/tpope/vim-fireplace.git",
-  "git://github.com/tpope/vim-pathogen.git",
-  "git://github.com/vim-scripts/Colour-Sampler-Pack.git"
+  "git://github.com/tpope/vim-pathogen.git"
 ]
 
 require 'fileutils'
 require 'open-uri'
 
-bundles_dir = File.join(File.dirname(__FILE__), "bundle")
+def install_plugins
+  bundles_dir = File.join(File.dirname(__FILE__), "bundle")
 
-FileUtils.mkdir_p(bundles_dir)
-FileUtils.cd(bundles_dir)
+  FileUtils.mkdir_p(bundles_dir)
 
-# TODO: maybe symlink .vimrc from here...
-
-git_bundles.each do |url|
-  dir = url.split('/').last.sub(/\.git$/, '')
-  if File.exists?(dir)
-    if !ENV["SKIP_UPDATING_VIM_BUNDLES"]
-      puts "  Pulling from #{url} into #{dir}"
-      `cd #{dir} && git reset --hard && git pull && cd ..`
+  FileUtils.cd(bundles_dir) do
+    git_bundles.each do |url|
+      dir = url.split('/').last.sub(/\.git$/, '')
+      if File.exists?(dir)
+        if !ENV["SKIP_UPDATING_VIM_BUNDLES"]
+          puts "  Pulling from #{url} into #{dir}"
+          `cd #{dir} && git reset --hard && git pull && cd ..`
+        end
+      else
+        puts "  Unpacking #{url} into #{dir}"
+        `git clone #{url} #{dir}`
+      end
     end
-  else
-    puts "  Unpacking #{url} into #{dir}"
-    `git clone #{url} #{dir}`
   end
 end
+
+def install_colorscheme
+  colors_file = 'tomorrownight.vim'
+  colors_dir = File.join(bundles_dir, "colors/colors")
+  FileUtils.mkdir_p(colors_dir)
+
+  FileUtils.mv(colors_file, colors_dir)
+end
+
+def link_vimrc
+  FileUtils.ln_s('.vimrc', '~/.vimrc')
+end
+
+link_vimrc
+install_plugins
+install_colorscheme
 
