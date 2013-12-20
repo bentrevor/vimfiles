@@ -55,6 +55,6 @@ def link_vimrc
 end
 
 link_vimrc
-install_plugins
+install_plugins git_bundles
 install_colorscheme
 
