@@ -50,7 +50,9 @@ def install_colorscheme
 end
 
 def link_vimrc
-  FileUtils.ln_s('../.vimrc', '~/../.vimrc')
+  FileUtils.cd File.dirname(__FILE__)
+  puts "\n\npwd: #{FileUtils.pwd}\n\n"
+  FileUtils.ln_s('.vimrc', '~/.vimrc')
 end
 
 link_vimrc
