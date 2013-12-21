@@ -1,21 +1,6 @@
-" Tomorrow Night - Full Colour and 256 Colour
-" http://chriskempson.com
-"
-" Hex colour conversion functions borrowed from the theme "Desert256""
+" Tomorrow Night Modified
 
 let g:colors_name = "tomorrow-night"
-
-" Default GUI Colours
-" let s:line = "282a2e"
-" let s:red = "cc6666"
-" let s:orange = "de935f"
-" let s:yellow = "000000"
-" let s:green = "b5bd68"
-" let s:cyan = "81a2be"
-" let s:blue = "5979ff"
-" let s:purple = "b294bb"
-" let s:window = "4d5057"
-" let s:black = "000000"
 
 let s:bright_red = "196"
 let s:red = "167"
@@ -53,10 +38,8 @@ fun <SID>X(group, fg, bg, attr)
     exec "hi " . a:group . " gui=" . a:attr . " cterm=" . a:attr
   endif
 endfun
-"}}}
 
 " Vim Highlighting
-" {{{
 call <SID>X("Normal", "", "", "")
 call <SID>X("LineNr", s:gray1, s:gray0, "")
 call <SID>X("NonText", s:gray1, "", "")
@@ -86,7 +69,6 @@ end
 if version >= 703
   call <SID>X("ColorColumn", "", s:line, "none")
 end
-" }}}
 
 " Standard Highlighting
 call <SID>X("Todo", s:red, "", "")
@@ -101,13 +83,12 @@ call <SID>X("Constant", s:yellow, "", "")
 call <SID>X("Number", s:blue, "", "")
 call <SID>X("String", s:cyan, "", "")
 call <SID>X("Special", s:gray3, "", "")
-call <SID>X("Comment", s:gray1, "", "")
+call <SID>X("Comment", s:gray2, "", "")
 call <SID>X("PreProc", s:orange, "", "")
 call <SID>X("Operator", s:white, "", "none")
 call <SID>X("Type", s:cyan, "", "none")
 call <SID>X("Define", s:gray1, "", "none")
 call <SID>X("Include", s:magenta, "", "")
-"call <SID>X("Ignore", "666666", "", "")
 
 " Coffeescript
 call <SID>X("coffeeSpecialIdent", s:blue, "", "")
@@ -136,7 +117,6 @@ call <SID>X("rubyAccess", s:orange, "", "")
 call <SID>X("rubyAttribute", s:cyan, "", "")
 call <SID>X("rubyInclude", s:orange, "", "")
 call <SID>X("rubyLocalVariableOrMethod", s:orange, "", "")
-" call <SID>X("rubyCurlyBlock", s:orange, "", "")
 call <SID>X("rubyStringDelimiter", s:cyan, "", "")
 call <SID>X("rubyInterpolationDelimiter", s:orange, "", "")
 call <SID>X("rubyConditional", s:purple, "", "")
@@ -154,7 +134,6 @@ call <SID>X("clojureParen", s:orange, "", "")
 call <SID>X("clojureSpecial", s:red, "", "")
 call <SID>X("clojureBoolean", s:green, "", "")
 call <SID>X("clojureConstant", s:green, "", "")
-" call <SID>X("clojureFunc", s:red, "", "")
 call <SID>X("clojureQuote", s:bright_white, "", "")
 call <SID>X("clojureUnquote", s:bright_white, "", "")
 call <SID>X("clojureMacro", s:red, "", "")
