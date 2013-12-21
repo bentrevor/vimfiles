@@ -114,8 +114,8 @@ let vimclojure#FuzzyIndent=1
 let vimclojure#ParenRainbow=1
 
 " always use my rainbow parens
-autocmd VimEnter * RainbowParenthesesToggle
-autocmd Syntax * RainbowParenthesesLoadRound
+autocmd FileType clojure RainbowParenthesesLoadRound
+autocmd FileType clojure RainbowParenthesesActivate
 
 
 
