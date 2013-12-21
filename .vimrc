@@ -72,6 +72,9 @@ autocmd BufNewFile,BufRead *.cljs set filetype=clojure
 autocmd BufNewFile,BufRead *.ejs set filetype=html
 autocmd BufNewFile,BufRead *.erb set filetype=html
 
+" config files with ruby syntax
+autocmd BufEnter,BufNewFile,BufRead Vagrantfile,Berksfile,Gemfile set filetype=ruby
+
 " pressing tab in command shows options
 set wildmenu
 
