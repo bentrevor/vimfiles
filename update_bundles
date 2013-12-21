@@ -42,19 +42,10 @@ def install_plugins(bundles)
   end
 end
 
-def install_colorscheme
-  colors_file = 'tomorrownight.vim'
-  colors_dir = File.join(bundles_dir, "colors/colors")
-  FileUtils.mkdir_p(colors_dir)
-
-  FileUtils.mv(colors_file, colors_dir)
-end
-
 def link_vimrc
   `ln -s ~/.vim/.vimrc ~/.vimrc`
 end
 
 link_vimrc
 install_plugins git_bundles
-install_colorscheme
 

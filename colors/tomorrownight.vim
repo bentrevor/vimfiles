@@ -97,22 +97,20 @@ call <SID>X("Conditional", "", "", "")
 call <SID>X("Repeat", "", "", "")
 call <SID>X("Structure", s:purple, "", "")
 call <SID>X("Function", s:red, "", "")
-call <SID>X("Constant", s:blue, "", "")
+call <SID>X("Constant", s:yellow, "", "")
 call <SID>X("Number", s:blue, "", "")
 call <SID>X("String", s:cyan, "", "")
-call <SID>X("Special", s:blue, "", "bold")
-call <SID>X("PreProc", s:purple, "", "")
-call <SID>X("Operator", s:cyan, "", "none")
+call <SID>X("Special", s:gray3, "", "")
+call <SID>X("Comment", s:gray1, "", "")
+call <SID>X("PreProc", s:orange, "", "")
+call <SID>X("Operator", s:white, "", "none")
 call <SID>X("Type", s:cyan, "", "none")
 call <SID>X("Define", s:gray1, "", "none")
 call <SID>X("Include", s:magenta, "", "")
 "call <SID>X("Ignore", "666666", "", "")
 
-" for some reason, the "lo" comment group isn't working,
-" so I have to add them all manually here
-call <SID>X("Comment", s:gray2, "", "")
-call <SID>X("VimLineComment", s:gray2, "", "")
-call <SID>X("ConfComment", s:gray2, "", "")
+" Coffeescript
+call <SID>X("coffeeSpecialIdent", s:blue, "", "")
 
 " Vim Highlighting
 call <SID>X("vimCommand", s:red, "", "none")
@@ -134,7 +132,6 @@ call <SID>X("hsCharacter", s:blue, "", "")
 " Ruby Highlighting
 call <SID>X("rubySymbol", s:light_blue, "", "")
 call <SID>X("rubyConstant", s:yellow, "", "")
-call <SID>X("rubyComment", s:gray1, "", "")
 call <SID>X("rubyAccess", s:orange, "", "")
 call <SID>X("rubyAttribute", s:cyan, "", "")
 call <SID>X("rubyInclude", s:orange, "", "")
