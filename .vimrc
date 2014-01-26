@@ -69,8 +69,8 @@ autocmd FileType clojure setlocal lispwords+=describe,it,context,around
 autocmd FileType clojure setlocal wildignore+=target/**/*
 autocmd BufNewFile,BufRead *.hiccup set filetype=clojure
 autocmd BufNewFile,BufRead *.cljs set filetype=clojure
-autocmd BufNewFile,BufRead *.ejs set filetype=html
-autocmd BufNewFile,BufRead *.erb set filetype=html
+autocmd BufNewFile,BufRead *.ejs set filetype=eruby.html
+autocmd BufNewFile,BufRead *.erb set filetype=eruby.html
 autocmd BufNewFile,BufRead *.json set filetype=javascript
 
 " config files with ruby syntax
