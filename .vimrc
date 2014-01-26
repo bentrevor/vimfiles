@@ -1,12 +1,12 @@
 call pathogen#infect()
 
+
 """ settings """
 """"""""""""""""
 filetype on
 filetype plugin on
 filetype indent on
 set nocompatible
-
 
 set encoding=utf8
 set termencoding=utf8
@@ -64,13 +64,14 @@ autocmd FileType clojure setlocal ts=2 sts=2 sw=2
 autocmd FileType python setlocal ts=4 sts=4 sw=4
 autocmd FileType java setlocal ts=4 sts=4 sw=4
 
-" clojure filetype settings
+" filetype settings
 autocmd FileType clojure setlocal lispwords+=describe,it,context,around
 autocmd FileType clojure setlocal wildignore+=target/**/*
 autocmd BufNewFile,BufRead *.hiccup set filetype=clojure
 autocmd BufNewFile,BufRead *.cljs set filetype=clojure
 autocmd BufNewFile,BufRead *.ejs set filetype=html
 autocmd BufNewFile,BufRead *.erb set filetype=html
+autocmd BufNewFile,BufRead *.json set filetype=javascript
 
 " config files with ruby syntax
 autocmd BufEnter,BufNewFile,BufRead Vagrantfile,Berksfile,Gemfile set filetype=ruby
@@ -79,7 +80,7 @@ autocmd BufEnter,BufNewFile,BufRead Vagrantfile,Berksfile,Gemfile set filetype=r
 set wildmenu
 
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc
+set wildignore=*.o,*~,*.pyc,node_modules
 if has("win16") || has("win32")
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 else
@@ -108,7 +109,7 @@ let NERDTreeIgnore=['\~$', 'target', 'repl$', 'out$', 'bin$']
 map <leader>nt :NERDTreeToggle<cr>
 
 " resize nerd tree
-map <leader>ns :vert<space>res<space>32<cr>
+map <leader>ns :NERDTreeFocus<cr>:vert<space>res<space>32<cr>
 
 let g:CommandTMaxFiles=40000
 map <leader>t :CommandTFlush<CR>:CommandT<CR>
@@ -179,7 +180,7 @@ nnoremap <leader>cc maI;<space><esc>$`a
 vnoremap <leader>cc 0I;<space><esc>
 
 " uncomment (only works for single line)
-nnoremap <leader>u $^xx$
+nnoremap <leader>u ma$^xx$`a
 
 " substitute text
 map <leader>sa :%s//g<Left><Left>
