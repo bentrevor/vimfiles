@@ -7,7 +7,6 @@ This is my vim config. There are many like it but this one is <del>mine</del> [C
 The idea is:
 - clone this to your home directory, renaming it `.vim`
 - run `./update_bundles`
-- symlink to the included `.vimrc`: something like `ln -s ~/.vim/.vimrc ~/.vimrc`
 
 ## Gotchas
 
