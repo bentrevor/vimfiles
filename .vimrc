@@ -57,12 +57,8 @@ set tabstop=2
 set shiftwidth=2
 
 " filetype-specific indentation
-autocmd FileType html setlocal ts=2 sts=2 sw=2
-autocmd FileType css setlocal ts=2 sts=2 sw=2
-autocmd FileType ruby setlocal ts=2 sts=2 sw=2
-autocmd FileType clojure setlocal ts=2 sts=2 sw=2
-autocmd FileType python setlocal ts=4 sts=4 sw=4
-autocmd FileType java setlocal ts=4 sts=4 sw=4
+autocmd FileType clojure,ruby,css,html setlocal ts=2 sts=2 sw=2
+autocmd FileType python,java,javascript setlocal ts=4 sts=4 sw=4
 
 " filetype settings
 autocmd FileType clojure setlocal lispwords+=describe,it,context,around
@@ -80,7 +76,7 @@ autocmd BufEnter,BufNewFile,BufRead Vagrantfile,Berksfile,Gemfile set filetype=r
 set wildmenu
 
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc,node_modules
+set wildignore=*.o,*~,*.pyc,node_modules,tmp,coverage
 if has("win16") || has("win32")
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 else
@@ -103,7 +99,7 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 """ plugin stuff """
 """"""""""""""""""""
 " ignore patterns for nerdtree
-let NERDTreeIgnore=['\~$', 'target', 'repl$', 'out$', 'bin$']
+let NERDTreeIgnore=['\~$', 'target', 'repl$', 'out$', 'bin$', 'tmp']
 
 " open nerd tree
 map <leader>nt :NERDTreeToggle<cr>
@@ -117,16 +113,15 @@ map <leader>t :CommandTFlush<CR>:CommandT<CR>
 let vimclojure#FuzzyIndent=1
 let vimclojure#ParenRainbow=1
 
-" always use my rainbow parens
-autocmd FileType clojure RainbowParenthesesLoadRound
-autocmd FileType clojure RainbowParenthesesActivate
+" always use my rainbow parens for lisp
+autocmd FileType clojure,scheme RainbowParenthesesLoadRound
+autocmd FileType clojure,scheme RainbowParenthesesActivate
 
 
 
 """ mappings """
 """"""""""""""""
 nnoremap ; :
-nnoremap , ;
 
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
@@ -144,23 +139,17 @@ noremap x "_dl
 " set * to not automatically jump to next word
 nnoremap * ma*`a
 
-" !! repeats last command
-nnoremap !! @:<cr>
-
-" unmap c-p, ex mode, F1 help,
-inoremap <c-p> p
+" unmap ex mode, F1 help
 nnoremap Q <nop>
+nnoremap <C-a> <nop>
 nmap <F1> <nop>
 imap <F1> <nop>
 
-" \h clears highlighting
-nnoremap <leader>h :noh<cr>
-
-" \w wraps highlighted text in parens
-vnoremap <leader>w <Esc>`>a)<Esc>`<i(<Esc>
-
-" \e evals clojure code with fireplace.vim
+" \e evals lisp code with fireplace.vim
 map <leader>e :Eval<cr>
+
+" \ws resizes the current window to be about half of my terminal's width
+map <leader>ws :vert<space>res<space>122<cr>
 
 " \ss shows the current syntax highlighting group
 map <leader>ss :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<cr>
@@ -178,13 +167,6 @@ vnoremap <leader>ch 0I--<esc>
 " \cc clojure
 nnoremap <leader>cc maI;<space><esc>$`a
 vnoremap <leader>cc 0I;<space><esc>
-
-" uncomment (only works for single line)
-nnoremap <leader>u ma$^xx$`a
-
-" substitute text
-map <leader>sa :%s//g<Left><Left>
-map <leader>sv :s//g<Left><Left>
 
 " delete trailing whitespace
 nmap <leader><leader>w :%s/\s\+$//<cr>ma/<up><up><cr>:noh<cr>`a
@@ -204,9 +186,6 @@ map ≠ mhggVG=`hzz
 
 " <alt-r> reloads document
 map ® :e<cr>zz
-
-" <alt-l> toggles colored parens for lisp
-map ¬ :RainbowParenthesesLoadRound<cr>:RainbowParenthesesActivate<cr>
 
 " <alt-p> toggles paste mode
 map π :set invpaste<CR>:set paste?<CR>
