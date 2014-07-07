@@ -49,6 +49,10 @@ def link_vimrc
   `ln -s ~/.vim/.vimrc ~/.vimrc`
 end
 
-link_vimrc
-install_plugins git_bundles
+def copy_syncolor
+  `cp ~/.vim/syncolor.vim /usr/share/vim/vim73/syntax/syncolor.vim`
+end
 
+link_vimrc
+copy_syncolor
+install_plugins git_bundles
